@@ -1,25 +1,31 @@
-import express, { Express, Request, Response } from "express";
-import bodyParser from "body-parser";
+import express, { Express, Request, Response } from 'express'
+import bodyParser from 'body-parser'
 import cors from 'cors'
-import connectDB from "./config/database";
-import user from "./routes/api/user";
+import connectDB from './config/database'
+import user from './routes/api/user'
+import workspace from './routes/api/workspace'
 
-const app: Express = express();
+const app: Express = express()
 
 // Connect to MongoDB
-connectDB();
+connectDB()
 app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+)
 app.use(express.static('public'))
-const port = 8001;
+const port = 8001
 
-app.use("/api/user", user);
+app.use('/api/user', user)
+app.use('/api/workspace', workspace)
 
 // app.get("/", (req: Request, res: Response) => {
 // 	res.send("Express + ss Server");
 // });
 
 app.listen(port, () => {
-	console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
+})

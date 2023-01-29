@@ -1,4 +1,4 @@
-import { Document, model, Schema } from "mongoose";
+import { Document, model, Schema } from 'mongoose'
 
 /**
  * Type to model the User Schema for TypeScript.
@@ -9,7 +9,7 @@ import { Document, model, Schema } from "mongoose";
 
 export type TUser = {
   userName: string
-};
+}
 
 /**
  * Mongoose Document based on TUser for TypeScript.
@@ -26,9 +26,9 @@ export interface IUser extends TUser, Document {}
 const userSchema: Schema = new Schema({
   userName: {
     type: String,
-    required: true
+    required: true,
   },
-});
+})
 
 /**
  * Mongoose Model based on TUser for TypeScript.
@@ -40,6 +40,6 @@ const userSchema: Schema = new Schema({
  * @param avatar:string
  */
 
-const User = model<IUser>("User", userSchema,"User");
+const User = model<IUser>('User', userSchema, 'User')
 
-export default User;
+export default User
